@@ -32,20 +32,6 @@ abstract: |
   Using bifactor analysis, study 1 proposes a scale that reconciles these two models and reduces 36 candidate items to 18.
   Study 2 convergently and discriminantly validates this scale.
   
-  One or two sentences providing a **basic introduction** to the field,  comprehensible to a scientist in any discipline.
-  
-  Two to three sentences of **more detailed background**, comprehensible  to scientists in related disciplines.
-  
-  One sentence clearly stating the **general problem** being addressed by  this particular study.
-  
-  One sentence summarizing the main result (with the words "**here we show**" or their equivalent).
-  
-  Two or three sentences explaining what the **main result** reveals in direct comparison to what was thought to be the case previously, or how the  main result adds to previous knowledge.
-  
-  One or two sentences to put the results into a more **general context**.
-  
-  Two or three sentences to provide a **broader perspective**, readily comprehensible to a scientist in any discipline.
-  
   <!-- https://tinyurl.com/ybremelq -->
   
 keywords          : "Engagement, engagement"
@@ -63,7 +49,7 @@ draft             : no
 
 documentclass     : "apa6"
 classoption       : "man"
-output            : papaja::apa6_word
+output            : papaja::apa6_pdf
 ---
 
 ```{r setup, include = FALSE}
@@ -339,11 +325,17 @@ The end result was two separate final scale definitions (one optimized for the s
 
 > Old text: We prioritized item deletions such that an item was implicated for deletion if: 1) modification index was high (relative to others) and 2) error residual was within the same "cell". The choice of item to delete was based on author preference for wording/semantics as well as construct element coverage (considering the possible consequences for construct deficiency). Item variance was also consulted (retention more likely with greater item variance).
 
-```{r, fig.cap="Sample modification index table"}
-#figure out how to display this in the middle of the paper rather than a figure at the end of the paper
-mod <- data.frame(read.csv('att.csv', row.names = NULL)[1:6, 2:5])
-colnames(mod) <- c('Variable 1', 'Relationship', 'Variable 2', "Δχ2") #Δχ2 isn't showing up properly in knit output. Fix.
-mod <- apa_table(mod)
+```{r modindices, fig.cap="Sample modification index table"}
+
+#figure out how to display this in the middle of the paper rather than a figure at the end of the paper  
+
+mod <- data.frame(read.csv('att.csv', row.names = NULL)[1:7, 2:5])
+mod2 <- mod[,-2]
+mod2$Notes <- c("Candidate for deletion due to construct duplication", "", "Candidate for retention due to substantive construct association", "", "", "", "")
+
+colnames(mod2) <- c('Element 1', 'Element 2', "Modification Index", "Notes") #Δχ2 isn't showing up properly in knit output. Fix.
+
+mod <- apa_table(mod2, caption = "Attitudinal structure modification indices (36 item analysis)", align = c("m{2cm}","m{2cm}","m{2cm}","m{7cm}"))
 mod
 ```
 
@@ -361,7 +353,7 @@ We used `r cite_r("r-references.bib")` for all our analyses.
 
 CFA drafts below
 
-```{r CFA.sub, echo=FALSE, warning=FALSE, fig.cap="Substantive factor structure CFA"}
+```{r CFAsub, echo=FALSE, warning=FALSE, fig.cap="Substantive factor structure CFA"}
 
 ## getting conditions into one large file below - 12/9/20
 
@@ -468,37 +460,42 @@ CFAdata<-CFAdata%>%rename(
 
 ```
 
-```{r CFA.att1, echo=FALSE, warning=FALSE, fig.cap="Substantive factor structure CFA"}
+```{r CFAatt1, echo=FALSE, warning=FALSE, fig.cap="Substantive factor measurement model"}
 Sub_Model<-'
-Absorption=~Item_1+Item_2+Item_3+Item_4+Item_5+Item_6+Item_7+Item_8+Item_9+Item_10+Item_11+Item_12
-Vigor=~Item_13+Item_14+Item_15+Item_16+Item_17+Item_18+Item_19+Item_20+Item_21+Item_22+Item_23+Item_24
-Dedication=~Item_25+Item_26+Item_27+Item_28+Item_29+Item_30+Item_31+Item_32+Item_33+Item_34+Item_35+Item_36
+Absorption = ~Item_1 + Item_3  + Item_5  + Item_8  + Item_10 + Item_11
+Vigor      = ~Item_14 + Item_16 + Item_17 + Item_19 + Item_21 + Item_22
+Dedication = ~ Item_26 + Item_28 + Item_31 + Item_32 + Item_34 + Item_35
 '
 
 Fit1.1<-lavaan::cfa(Sub_Model, data = CFAdata)
-semPlot::semPaths(Fit1.1, "std")
-fit1.1 <- as.data.frame(fitMeasures(Fit1.1))
+# semPlot::semPaths(Fit1.1, "std")
+
+semPlot::semPaths(Fit1.1, what="std", sizeLat=10, style="lisrel",
+              sizeMan=4.5,edge.label.cex=0.75, edge.color="black", asize=2, rotation=4)
+
+
 # summary(Fit1.1, fit.measure=TRUE)
 
 # write.csv(modindices(Fit1.1, sort=TRUE), "fit_substantive.csv")
 ```
 
-```{r CFA.att2, echo=FALSE, warning=FALSE, fig.cap="Attitudinal factor structure CFA"}
+```{r CFAatt2, echo=FALSE, warning=FALSE, fig.cap="Attitudinal factor measurement model"}
 
 
 Att_Model<-'
-Cognitive=~Item_1+Item_2+Item_3+Item_4+Item_13+Item_14+Item_15+Item_16+Item_25+Item_26+Item_27+Item_28
-Affective=~Item_5+Item_6+Item_7+Item_8+Item_17+Item_18+Item_19+Item_20+Item_29+Item_30+Item_31+Item_32
-Behavioral=~Item_9+Item_10+Item_11+Item_12+Item_21+Item_22+Item_23+Item_24+Item_33+Item_34+Item_35+Item_36
+Cognitive  = ~Item_1  + Item_3  + Item_14 + Item_16 + Item_26 + Item_28
+Affective  = ~Item_5 +  Item_8  + Item_17 + Item_19 + Item_31 + Item_32
+Behavioral = ~Item_10 + Item_11 + Item_21 + Item_22 + Item_34 + Item_35
 '
 Fit1.2<-lavaan::cfa(Att_Model, data = CFAdata)
-semPlot::semPaths(Fit1.2,"std")
+semPlot::semPaths(Fit1.2,what="std", sizeLat=10, style="lisrel",
+              sizeMan=4.5,edge.label.cex=0.75, edge.color="black", asize=2, rotation=2)
 # lavaan::fitMeasures(Fit1.2)
 # summary(Fit1.2, fit.measure=TRUE)
 
 ```
 
-```{r CFA.att3, echo=FALSE, warning=FALSE, fig.cap="Bifactor structure"}
+```{r CFAatt3, echo=FALSE, warning=FALSE, fig.cap="Bifactor measurement model"}
 
 modified2 <-'
 Absorption = ~Item_1 + Item_3  + Item_5  + Item_8  + Item_10 + Item_11
@@ -520,12 +517,40 @@ Dedication ~~ 0*Cognitive
 
 Fit.mod2 <- lavaan::cfa(modified2, data = CFAdata, missing = "ML", estimator = 'MLR')
 
-semPlot::semPaths(Fit.mod2, bifactor = c("Cognitive", "Affective", "Behavioral"), "std", layout = "tree3",
-                  rotation = 2, curvePivot=TRUE, style="lisrel", nCharNodes = 0, pastel=TRUE)
+# semPlot::semPaths(Fit.mod2, bifactor = c("Cognitive", "Affective", "Behavioral"), "std", layout = "tree3",
+#                  rotation = 2, curvePivot=TRUE, style="lisrel", nCharNodes = 0, pastel=FALSE)
 
-modindices(Fit.mod2, sort = TRUE, maximum.number = 25)
+semPlot::semPaths(Fit.mod2, bifactor = c("Cognitive", "Affective", "Behavioral"), style="lisrel", "std", layout = "tree3", sizeLat=10, rotation = 2, sizeMan=4.5,edge.label.cex=0.75, edge.color="black", asize=2)
 
-summary(Fit.mod2, standardized=TRUE)
+
+# modindices(Fit.mod2, sort = TRUE, maximum.number = 25)
+
+# summary(Fit.mod2, standardized=TRUE)
+
+```
+
+```{r fitmeasures}
+
+# into data frames
+fit1.1 <- as.data.frame(fitMeasures(Fit1.1))
+fit1.1$`fitMeasures(Fit1.1)` <- round(fit1.1$`fitMeasures(Fit1.1)`, 2)
+
+fit1.2 <- as.data.frame(fitMeasures(Fit1.2))
+fit1.2$`fitMeasures(Fit1.2)` <- round(fit1.2$`fitMeasures(Fit1.2)`, 2)
+
+fit.mod2 <- as.data.frame(fitMeasures(Fit.mod2))
+fit.mod2$`fitMeasures(Fit.mod2)` <- round(fit.mod2$`fitMeasures(Fit.mod2)`, 2)
+
+indices_att <- as.data.frame(t(fit1.1[c(3,4,23,29,9,10,19),]))        ## Chi-sq, df, RMSEA, SRMR, CFI, TLI, AIC
+indices_sub <- as.data.frame(t(fit1.2[c(3,4,23,29,9,10,19),]))
+indices_bi <- as.data.frame(t(fit.mod2[c(3,4,44,58,17,18,38),]))
+
+fits <- rbind(indices_att, indices_sub, indices_bi)
+names(fits) <- c("Chi Square", "df", "RMSEA", "SRMR", "CFI", "TLI", "AIC")
+model <- c("Attitudinal", "Substantive", "bifactor")
+fits2 <- cbind(model, fits)
+
+apa_table(fits2, caption = "Summary fit statistics (18 item proposed scale definitions)")
 
 ```
 
