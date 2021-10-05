@@ -27,12 +27,10 @@ authornote: |
   Enter author note here.
 
 abstract: |
-  Employee engagement has, in recent years, enjoyed a surge in popularity as a positive employee outcome.
-  Despite this burgeoning interest, disagreement still remains regarding its factor structure and nomological relationship with similar concepts, such as burnout.
-  The classical definition of engagement divides it between the dimensions of vigor, dedication, and absorption, while the tripartite model of attitudes divides engagement between its cognitive, behavioral, and affective manifestations. 
-  Using bifactor analysis, study 1 proposes a scale that reconciles these two models.
+  Employee engagement has recently enjoyed a surge in interest as a positive employee outcome despite continued disageement regarding its factor structure and nomological relationship to other constructs, like burnout.
+  We contrast two three-factor models of engagement: substantive, with the dimensions vigor, dedication and absorption, and attitudinal, with cognitive, affective and behavioral dimensions.
+  Using bifactor analysis, study 1 proposes a scale that reconciles these two models and reduces 36 candidate items to 18.
   Study 2 convergently and discriminantly validates this scale.
-
   
   One or two sentences providing a **basic introduction** to the field,  comprehensible to a scientist in any discipline.
   
@@ -65,7 +63,7 @@ draft             : no
 
 documentclass     : "apa6"
 classoption       : "man"
-output            : papaja::apa6_pdf
+output            : papaja::apa6_word
 ---
 
 ```{r setup, include = FALSE}
@@ -79,11 +77,11 @@ set.seed(42)
 knitr::opts_chunk$set(cache.extra = knitr::rand_seed)
 ```
 
+#Introduction
+
 > Renata's SEM paper will come in handy
 
 Recent decades have seen a proliferation of interest and research in the construct of employee engagement.
-
-
 
 > more on why we're looking at tripartite model
 
@@ -99,7 +97,7 @@ Regarding measurement, Gallup is widely acknowledged as an early pioneer in the 
 
 > TRIPARTITE MODEL--work here
 
-The first, to our knowledge, use of the word "engagement" as a construct came in @kahn1990psychological, defining it as: "the harnessing of organization members' selves to their work roles; in engagement, people employ and express themselves physically, cognitively, and emotionally during role performances." Although this definition was quickly bypassed by subsequent papers (see, for example, [@baumruk2004missing] and [@shaw2005engagement], who framed it in terms of one's cognitive and affective *commitment* to one's organization), @kahn1990psychological's definition is notable in that it conforms to the then-ascendant tripartite model of attitudes proposed by @rosenberg_cognitive_1960. This model frames attitudes as latent variables that manifest cognitively, affectively and behaviorally.
+The first, to our knowledge, use of the word "engagement" as a construct came from @kahn1990psychological, who defined it as: "the harnessing of organization members' selves to their work roles; in engagement, people employ and express themselves physically, cognitively, and emotionally during role performances." Although this definition was quickly bypassed by subsequent papers (see, for example, [@baumruk2004missing] and [@shaw2005engagement], who framed it in terms of one's cognitive and affective *commitment* to one's organization), @kahn1990psychological's definition is notable in that it conforms to the then-ascendant tripartite model of attitudes proposed by @rosenberg_cognitive_1960. This model frames attitudes as latent variables that manifest cognitively, affectively and behaviorally.
 
 Although falling out of favor in the decades following its construction, interest in the tripartite model was revived by @kaiser_campbell_2019,
 
@@ -251,20 +249,11 @@ colnames(together)[39] <- "hours"     ## label too long
 
 ## Participants
 
-`r num` individuals provided ratings across 36 candidate items. These participants were gathered via snowball sampling, with an initial population of undergraduate and graduate students, as well as professional acquaintances of faculty members.
+`r num` individuals provided ratings across 36 candidate items. These participants were gathered via snowball sampling, with an initial population of undergraduate and graduate students, as well as professional acquaintances of faculty members.`
 
-Participant job title, hours worked per week, and organizational tenure were recorded. Mean hours worked per week was `r mean(together$hours, na.rm=TRUE)` (SD = `r sd(together$hours, na.rm=TRUE)`), see Figure \@ref(fig:hours). Mean organizational tenure was `r mean(together$tenure, na.rm = TRUE)` years with a standard deviation of `r sd(together$tenure, na.rm = TRUE)`, see Figure \@ref(fig:tenure). Participants who did not exactly specify their tenure (e.g. "A bit over a year") were not included in this average.
+> Any validity checks?
 
-```{r tenure, echo=FALSE, warning=FALSE, fig.cap="Distribution of organizational tenure (years)"}
-tenure_hist <- ggplot(together) +
-  geom_histogram(aes(x = tenure)) + 
-  xlab("Organizational tenure (years)") +
-  ylab("Number of responses") +
-  ggtitle("How long have you been with this organization?") +
-  theme_apa()
-
-tenure_hist
-```
+Participant job title, hours worked per week, and organizational tenure were recorded. Mean hours worked per week was `r mean(together$hours, na.rm=TRUE)` (SD = `r sd(together$hours, na.rm=TRUE)`), see Figure \@ref(fig:hours). Mean organizational tenure was `r mean(together$tenure, na.rm = TRUE)` (SD = `r sd(together$tenure, na.rm = TRUE)`), see Figure \@ref(fig:tenure). Participants who did not exactly specify their tenure (e.g. "A bit over a year") were not included in this average.
 
 ```{r hours, echo=FALSE, warning=FALSE, fig.cap="Distribution of mean hours worked per week"}
 
@@ -278,9 +267,24 @@ hours_hist <- ggplot(together) +
 hours_hist
 ```
 
-Participants provided their job titles via an optional free text-entry box at the end of the survey. From there, we classified job titles according to the International Standard Classification of Occupations (ISCO-8) with the `classify_occupation` function within the `labourR` package (@kouretsis2020). The ISCO hierarchically organizes jobs in increasing order of specificity. For example, the first level of the hierarchy distinguishes a professional from a clerical worker or a technician. On the second level, professionals are distinguished among each other by whether they are engineers, medical workers, lawyers, and so on.
+```{r tenure, echo=FALSE, warning=FALSE, fig.cap="Distribution of organizational tenure (years)"}
+tenure_hist <- ggplot(together) +
+  geom_histogram(aes(x = tenure)) + 
+  xlab("Organizational tenure (years)") +
+  ylab("Number of responses") +
+  ggtitle("How long have you been with this organization?") +
+  theme_apa()
 
-`r job_groups`
+tenure_hist
+```
+
+Participants provided their job titles via an optional free text-entry box at the end of the survey. From there, we classified job titles according to the International Standard Classification of Occupations (ISCO-8) with the `classify_occupation` function within the `labourR` package (@kouretsis2020). The ISCO hierarchically organizes jobs in increasing order of specificity. For example, the first level of the hierarchy distinguishes a professional from a clerical worker or a technician. On the second level, professionals are distinguished among each other by whether they are engineers, medical workers, lawyers, and so on. See \@ref(fig:jobs)
+
+
+
+```{r jobs, echo=FALSE, warning=FALSE, fig.cap="ISCO professional categories of participants"}
+knitr::kable(job_groups, col.names = c("Professional category", "Count"))
+```
 
 ## Material
 
@@ -320,17 +324,20 @@ The effective result of this was two divergent quasi-experimental approaches: 1)
 
 > To Casey: document your process here
 
+We conducted a correct item-total correlation on our original 36-items set. Base off, the r. drops that the corrected item-total correlations provide us we narrowed it down by selecting that items that had the best r. drops off removing one item at a time. For example, each cell division contain 4 items, therefore, we remove one of the four items creating 6 potential 3 item corrected item correlations, and from there we choose the items with the best r. drops. We continued the same process when narrowing our three items down to two items. An example is shown below:
+
+
 ### CFA Modification Indices
 
-We followed two parallel stepwise item-reduction processes centered around eliminating items in decreasing order of modification indices. Looking at the 36-item substantive and attitudinal models independently, we requested modification indices from each, with the intent of retaining indicators whose fixed shared residual covariances were associated with high modification indices (indicating better model fit if the paths were freed). The item pair with the highest modification index was scrutinized, with a subjective group judgment made on wording/semantics content domain coverage. The less preferred item was removed from the model. In cases where the highest modification index was between the only two remaining items in a substantive-attitudinal pair, these items were passed over for scrutiny in favor of the items with the next-highest index. This process was repeated until 18 items remained (i.e., 2 items for each of the 9 substantive-attitudinal pairs)
+We followed two parallel stepwise item-reduction processes centered around eliminating items in decreasing order of modification indices. Looking at the 36-item substantive and attitudinal models independently (process 1 and process 2), we requested modification indices from each, with the intent of retaining indicators whose fixed shared residual covariances were associated with high modification indices (indicating better model fit if the paths were freed). The item pair with the highest modification index was scrutinized, with a subjective group judgment made on wording and content domain coverage. The less preferred item was removed from the model. In cases where the highest modification index was between the only two remaining items in a substantive-attitudinal pair, these items were passed over for scrutiny in favor of the items with the next-highest index. This process was repeated until 18 items remained (i.e., 2 items for each of the 9 substantive-attitudinal pairs).
 
 For example, the path with the highest modification index across both CFAs was between item 2 and item 4, which are both indicators of "Absorption" and "Cognition". One of these items was therefore a candidate for deletion, and semantic preference was given to item 4, "I find it difficult to mentally disconnect from work" over item 2. After item 2 was excluded from both scale definitions (substantive and attitudinal), the CFAs were re-run and modification indices re-checked for bi-factor structure optimizing modifications.[^2]
 
 [^2]: Probably put a table in here highlighting certain modification indices (with a key to intended factor-item association). Look at "modincides1"
 
-The end result was two separate final scale definitions (one optimized for the substantive model and one for the attitudinal).
+The end result was two separate final scale definitions (one optimized for the substantive model and one for the attitudinal model).
 
-We prioritized item deletions such that an item was implicated for deletion if: 1) modification index was high (relative to others) and 2) error residual was within same "cell". The choice of item to delete was based on author preference for wording/semantics as well as construct element coverage (considering the possible consequences for construct deficiency). Item variance was also consulted (retention more likely with greater item variance).
+> Old text: We prioritized item deletions such that an item was implicated for deletion if: 1) modification index was high (relative to others) and 2) error residual was within the same "cell". The choice of item to delete was based on author preference for wording/semantics as well as construct element coverage (considering the possible consequences for construct deficiency). Item variance was also consulted (retention more likely with greater item variance).
 
 ```{r, fig.cap="Sample modification index table"}
 #figure out how to display this in the middle of the paper rather than a figure at the end of the paper
