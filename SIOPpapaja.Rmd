@@ -1,5 +1,5 @@
 ---
-title             : "Development of an Intentional BiFactor Engagement Measure"
+title             : "Development of an Intentionally Bi-factor Engagement Measure"
 shorttitle        : "BiFactor Engagement"
 
 author: 
@@ -27,7 +27,7 @@ authornote: |
   Enter author note here.
 
 abstract: |
-  Employee engagement has recently enjoyed a surge in interest as a positive employee outcome despite continued disageement regarding its factor structure and nomological relationship to other constructs, like burnout.
+  Employee engagement has enjoyed a surge in interest as a positive employee outcome despite continued disageement regarding its factor structure and nomological relationship to other constructs, like burnout.
   We contrast two three-factor models of engagement: substantive, with the dimensions vigor, dedication and absorption, and attitudinal, with cognitive, affective and behavioral dimensions.
   Using bifactor analysis, study 1 proposes a scale that reconciles these two models and reduces 36 candidate items to 18.
   Study 2 convergently and discriminantly validates this scale.
