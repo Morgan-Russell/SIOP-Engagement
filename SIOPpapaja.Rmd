@@ -235,9 +235,7 @@ colnames(together)[39] <- "hours"     ## label too long
 
 ## Participants
 
-`r num` individuals provided ratings across 36 candidate items. These participants were gathered via snowball sampling, with an initial population of undergraduate and graduate students, as well as professional acquaintances of faculty members.`
-
-> Any validity checks?
+`r num` individuals provided ratings across 36 candidate items. These participants were gathered via snowball sampling, with an initial population of undergraduate and graduate students, as well as professional acquaintances of faculty members.` All surveys were administered on Qualtrics.
 
 Participant job title, hours worked per week, and organizational tenure were recorded. Mean hours worked per week was `r mean(together$hours, na.rm=TRUE)` (SD = `r sd(together$hours, na.rm=TRUE)`), see Figure \@ref(fig:hours). Mean organizational tenure was `r mean(together$tenure, na.rm = TRUE)` (SD = `r sd(together$tenure, na.rm = TRUE)`), see Figure \@ref(fig:tenure). Participants who did not exactly specify their tenure (e.g. "A bit over a year") were not included in this average.
 
@@ -272,17 +270,17 @@ Participants provided their job titles via an optional free text-entry box at th
 knitr::kable(job_groups, col.names = c("Professional category", "Count"))
 ```
 
-## Material
-
-Our survey was administered on Qualtrics.
-
 ### Item generation
 
-We generated a set of 36 items for our engagement measure, with the ultimate goal of reducing them to a final set of 18. These items were generated according to a review of extant tripartite engagement measures, as well as *WHAT RESEARCH DID WE USE FOR ATTITUDINAL WORDING? WAS IT LITERALLY JUST "I THINK", "I FEEL", "I DO"?* Each item was worded to reflect both a substantive dimension as well as an attitudinal dimension. For example, the item "My job makes me feel like I'm part of something meaningful" reflects the affective dimension with "feel" and the dedication dimension with "I'm part of something meaningful."
+We generated a set of 50 items for our engagement measure, with the ultimate goal of reducing them to a final set of 18. These items were generated according to a review of extant tripartite engagement measures, as well as *WHAT RESEARCH DID WE USE FOR ATTITUDINAL WORDING? WAS IT LITERALLY JUST "I THINK", "I FEEL", "I DO"?* Each item was worded to reflect both a substantive dimension as well as an attitudinal dimension. For example, the item "My job makes me feel like I'm part of something meaningful" reflects the affective dimension with "feel" and the dedication dimension with "I'm part of something meaningful."
 
 Our 3x3 bifactor model produced nine pairs of dimensions (e.g., Vigor-Cognitive, Vigor-Affective, Vigor-Behavioral, etc.). With 36 initial items, this left four items per pair of substantive and attitudinal dimensions.
 
-The substantive scale definitions provided for ratings were:
+### Content validation and initial item reduction
+
+An item sorting process was conducted to ensure content validity of our scale. Our original 50 items were presented to seven masters and PhD students in industrial-organizational psychology at Montclair State University, with each student instructed to sort each item into its respective substantive and attitudinal dimensions. Items that were not sorted into the same substantive-attitudinal dimension pair by at least five of seven raters were excluded from further analysis. Students were not aware of the intended dimensions of each item and were presented with the following definitions for sorting:
+
+Substantive:
 
 -   *Absorption*: Being fully immersed in one's work, where time passes quickly and one has difficulty detaching from work tasks
 
@@ -290,7 +288,7 @@ The substantive scale definitions provided for ratings were:
 
 -   *Dedication*: Experiencing pride and challenge in ones work, as well as strong feelings of support from and loyalty toward the organization
 
-The attitudinal scale definitions were:
+Attitudinal:
 
 -   *Cognitive*: Pertaining to thoughts or general mental processes (for example what someone thinks)
 
@@ -298,7 +296,10 @@ The attitudinal scale definitions were:
 
 -   *Behavioral*: Pertaining to acts or actions (for example, what someone does)
 
-See table *X* for a full list of items and their respective dimensions.
+> See table *X* for a full list of items and their respective dimensions.
+
+Following item sorting, we further reviewed the wording of each item and eliminated all that, upon review, fell outside of the content domain (e.g. “I would rather work here than elsewhere”), eventually arriving at 36 candidate items.
+
 
 ## Procedure
 
@@ -559,6 +560,21 @@ apa_table(fits2, caption = "Summary fit statistics (18 item proposed scale defin
 Construct validation was acccomplished via administration of the 17-item UWES as well as the @saks2006antecedents 12-item scale. @saks2006antecedents aggregates to two scales: job and organizational engagement.
 
 # Discussion
+
+The purpose of this study was to present two divergent approaches for constructing scales that simultaneously probe the substantive and attitudinal factor structures of employee engagement. Toward this end, we propose two similar scale definitions 
+
+Our next endeavor will be to establish convergent and discriminant validity of the scales.
+
+Currently, the UWES is one of the most popular engagement scales
+Our proposed scale would 
+
+Bifactor analysis may be a valuable method of reconciling previously at-odds approaches to describing the same construct.
+
+Our research contributes to theory in two key ways. Firstly, it introduces a novel measure of engagement, developed in English, that will allow future researchers to further probe the tripartite attitudinal structure of the construct. To our knowledge, ours is the only engagement scale that probes the specific attitudinal dimensions of engagement.
+Secondly, we more generally advance the use of bifactor analysis as an alternative approach to testing and comparing structural models of constructs. Rather than 
+We show that a scale can exhibit high internal consistency while simultaneously measuring two different structural models.
+It is our hope that the success of this approach might evangelize bifactor analysis and the more general approach of consolidating and integrating theories rather than parsing them.
+
 
 \newpage
 
