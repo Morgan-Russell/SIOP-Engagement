@@ -2,13 +2,6 @@
 \ifnextchar[{\eatarg}{}
 
 \centering
-\includegraphics{SIOPpapaja_files/figure-latex/tenure-1.pdf}
-\caption{\label{fig:tenure}Distribution of organizational tenure (years)}
-\end{figure*}
-\begin{figure*}[hbt]
-\ifnextchar[{\eatarg}{}
-
-\centering
 \includegraphics{SIOPpapaja_files/figure-latex/hours-1.pdf}
 \caption{\label{fig:hours}Distribution of mean hours worked per week}
 \end{figure*}
@@ -16,20 +9,27 @@
 \ifnextchar[{\eatarg}{}
 
 \centering
-\includegraphics{SIOPpapaja_files/figure-latex/CFA.att1-1.pdf}
-\caption{(\#fig:CFA.att1)Substantive factor structure CFA}
+\includegraphics{SIOPpapaja_files/figure-latex/tenure-1.pdf}
+\caption{\label{fig:tenure}Distribution of organizational tenure (years)}
 \end{figure*}
 \begin{figure*}[hbt]
 \ifnextchar[{\eatarg}{}
 
 \centering
-\includegraphics{SIOPpapaja_files/figure-latex/CFA.att2-1.pdf}
-\caption{(\#fig:CFA.att2)Attitudinal factor structure CFA}
+\includegraphics{SIOPpapaja_files/figure-latex/CFAatt1-1.pdf}
+\caption{\label{fig:CFAatt1}Substantive factor measurement model}
 \end{figure*}
 \begin{figure*}[hbt]
 \ifnextchar[{\eatarg}{}
 
 \centering
-\includegraphics{SIOPpapaja_files/figure-latex/CFA.att3-1.pdf}
-\caption{(\#fig:CFA.att3)Bifactor structure}
+\includegraphics{SIOPpapaja_files/figure-latex/CFAatt2-1.pdf}
+\caption{\label{fig:CFAatt2}Attitudinal factor measurement model}
+\end{figure*}
+\begin{figure*}[hbt]
+\ifnextchar[{\eatarg}{}
+
+\centering
+\includegraphics{SIOPpapaja_files/figure-latex/CFAatt3-1.pdf}
+\caption{\label{fig:CFAatt3}Bifactor measurement model}
 \end{figure*}

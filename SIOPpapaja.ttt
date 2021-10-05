@@ -5,18 +5,42 @@
 \begin{center}
 \begin{threeparttable}
 
-\caption{\label{tab:unnamed-chunk-1}}
+\caption{\label{tab:modindices}Attitudinal structure modification indices (36 item analysis)}
 
-\begin{tabular}{llll}
+\begin{tabular}{m{2cm}m{2cm}m{2cm}m{7cm}}
 \toprule
-Variable 1 & \multicolumn{1}{c}{Relationship} & \multicolumn{1}{c}{Variable 2} & \multicolumn{1}{c}{<U+0394><U+03C7>2}\\
+Element 1 & \multicolumn{1}{c}{Element 2} & \multicolumn{1}{c}{Modification Index} & \multicolumn{1}{c}{Notes}\\
 \midrule
-Item\_2 & \textasciitilde{}\textasciitilde{} & Item\_4 & 192.41\\
-Item\_8 & \textasciitilde{}\textasciitilde{} & Item\_18 & 96.05\\
-Item\_29 & \textasciitilde{}\textasciitilde{} & Item\_35 & 62.25\\
-Item\_14 & \textasciitilde{}\textasciitilde{} & Item\_20 & 56.38\\
-Item\_1 & \textasciitilde{}\textasciitilde{} & Item\_12 & 51.39\\
-Item\_1 & \textasciitilde{}\textasciitilde{} & Item\_13 & 50.33\\
+Item\_2 & Item\_4 & 192.41 & Candidate for deletion due to construct duplication\\
+Item\_8 & Item\_18 & 96.05 & \\
+Item\_29 & Item\_35 & 62.25 & Candidate for retention due to substantive construct association\\
+Item\_14 & Item\_20 & 56.38 & \\
+Item\_1 & Item\_12 & 51.39 & \\
+Item\_1 & Item\_13 & 50.33 & \\
+Item\_13 & Item\_12 & 41.40 & \\
+\bottomrule
+\end{tabular}
+
+\end{threeparttable}
+\end{center}
+
+\end{table*}
+\begin{table*}[hbt]
+\ifnextchar[{\eatarg}{}
+[tbp]
+
+\begin{center}
+\begin{threeparttable}
+
+\caption{\label{tab:fitmeasures}Summary fit statistics (18 item proposed scale definitions)}
+
+\begin{tabular}{llllllll}
+\toprule
+model & \multicolumn{1}{c}{Chi Square} & \multicolumn{1}{c}{df} & \multicolumn{1}{c}{RMSEA} & \multicolumn{1}{c}{SRMR} & \multicolumn{1}{c}{CFI} & \multicolumn{1}{c}{TLI} & \multicolumn{1}{c}{AIC}\\
+\midrule
+Attitudinal & 454.30 & 132.00 & 0.10 & 0.07 & 0.83 & 0.80 & 13,473.40\\
+Substantive & 473.56 & 132.00 & 0.10 & 0.07 & 0.82 & 0.79 & 13,492.66\\
+bifactor & 264.70 & 111.00 & 0.07 & 0.05 & 0.92 & 0.89 & 14,113.31\\
 \bottomrule
 \end{tabular}
 
