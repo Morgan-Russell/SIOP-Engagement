@@ -34,7 +34,7 @@ abstract: |
   
   <!-- https://tinyurl.com/ybremelq -->
   
-keywords          : "Engagement, engagement"
+keywords          : "Engagement, bifactor analysis"
 wordcount         : "X"
 
 bibliography      : ["r-references.bib", "engage.bib", "siopadds.bib", "bifactor.bib", "book.bib", "renata.bib"]
@@ -47,7 +47,8 @@ linenumbers       : no
 mask              : no
 draft             : no
 
-documentclass     : "apa6"
+csl               : "apa7.csl"
+documentclass     : "apa7"
 classoption       : "man"
 output            : papaja::apa6_pdf
 ---
@@ -63,7 +64,7 @@ set.seed(42)
 knitr::opts_chunk$set(cache.extra = knitr::rand_seed)
 ```
 
-#Introduction
+# Introduction
 
 > Renata's SEM paper will come in handy
 
@@ -89,11 +90,7 @@ Although falling out of favor in the decades following its construction, interes
 
 > we need to do some market research on the Q12: 1. what's the feedback report look like? (google images show one overall "satsifaction" score and/or one overall "engagement" score), 2. how much does it cost, 3. what are the 200 pulse items Gallup refers to? (6/7/21)
 
-Our conceptualization of work engagement is a mental state wherein employees...
 
--   ...feel energized (**Vigor**)
--   ...are enthusiastic about the content of their work and the things they do (**Dedication**)
--   ...are so immersed in their work activities that time seems compressed (**Absorption**)
 
 This model is not without criticism, however. Some critics question its structural validity by pointing out that vigor, dedication and absorption all correlate highly with each other [@kulikowski2017we].
 
@@ -188,7 +185,6 @@ together$id <- 1:nrow(together) #adds unique identifier to satisfy inane require
 ISCO <- classify_occupation(together, text_col = 'position', isco_level = 1) #nrow = 249 (I think BC it ignores NA's?)
 
 ISCO$iscoGroup <- as.numeric(ISCO$iscoGroup)
-ISCO$iscoGroup
 
 ISCO$iscoGroup <- recode(ISCO$iscoGroup, `1` = "Managers", `2` = "Professionals", `3` = "Technicians and associate professionals", `4` = "Clerical Support Workers", `5` = "Service and sales workers", `6` = "Skilled agricultural, forestry and fishery workers", `7` = "Craft and related trades workers", `8` = "Plant and machine operators, and assemblers", `9` = "Elementary occupations", `10` = "Armed forces occupations")
 
@@ -237,9 +233,9 @@ colnames(together)[39] <- "hours"     ## label too long
 
 `r num` individuals provided ratings across 36 candidate items. These participants were gathered via snowball sampling, with an initial population of undergraduate and graduate students, as well as professional acquaintances of faculty members.` All surveys were administered on Qualtrics.
 
-Participant job title, hours worked per week, and organizational tenure were recorded. Mean hours worked per week was `r mean(together$hours, na.rm=TRUE)` (SD = `r sd(together$hours, na.rm=TRUE)`), see Figure \@ref(fig:hours). Mean organizational tenure was `r mean(together$tenure, na.rm = TRUE)` (SD = `r sd(together$tenure, na.rm = TRUE)`), see Figure \@ref(fig:tenure). Participants who did not exactly specify their tenure (e.g. "A bit over a year") were not included in this average.
+Participant job title, hours worked per week, and organizational tenure were recorded. Mean hours worked per week was `r mean(together$hours, na.rm=TRUE)` (SD = `r sd(together$hours, na.rm=TRUE)`). Mean organizational tenure was `r mean(together$tenure, na.rm = TRUE)` (SD = `r sd(together$tenure, na.rm = TRUE)`). Participants who did not exactly specify their tenure (e.g. "A bit over a year") were not included in this average.
 
-```{r hours, echo=FALSE, warning=FALSE, fig.cap="Distribution of mean hours worked per week"}
+```{r hours, echo=FALSE, warning=FALSE, fig.cap="Distribution of mean hours worked per week",include=FALSE}
 
 hours_hist <- ggplot(together) +
   geom_histogram(aes(x = hours)) +
@@ -251,7 +247,7 @@ hours_hist <- ggplot(together) +
 hours_hist
 ```
 
-```{r tenure, echo=FALSE, warning=FALSE, fig.cap="Distribution of organizational tenure (years)"}
+```{r tenure, echo=FALSE, warning=FALSE, fig.cap="Distribution of organizational tenure (years)", include=FALSE}
 tenure_hist <- ggplot(together) +
   geom_histogram(aes(x = tenure)) + 
   xlab("Organizational tenure (years)") +
@@ -262,13 +258,12 @@ tenure_hist <- ggplot(together) +
 tenure_hist
 ```
 
-Participants provided their job titles via an optional free text-entry box at the end of the survey. From there, we classified job titles according to the International Standard Classification of Occupations (ISCO-8) with the `classify_occupation` function within the `labourR` package (@kouretsis2020). The ISCO hierarchically organizes jobs in increasing order of specificity. For example, the first level of the hierarchy distinguishes a professional from a clerical worker or a technician. On the second level, professionals are distinguished among each other by whether they are engineers, medical workers, lawyers, and so on. See \@ref(fig:jobs)
-
-
-
-```{r jobs, echo=FALSE, warning=FALSE, fig.cap="ISCO professional categories of participants"}
-knitr::kable(job_groups, col.names = c("Professional category", "Count"))
+```{r job_table, fig.cap="ISCO professional categories of participants"}
+job_table <- knitr::kable(job_groups, col.names = c("Professional category", "Count"))
+job_table
 ```
+
+Participants provided their job titles via an optional free text-entry box at the end of the survey. From there, we classified job titles according to the International Standard Classification of Occupations (ISCO-8) with the `classify_occupation` function within the `labourR` package (@R-labourR). The ISCO hierarchically organizes jobs in increasing order of specificity. For example, the first level of the hierarchy distinguishes a professional from a clerical worker or a technician. On the second level, professionals are distinguished among each other by whether they are engineers, medical workers, lawyers, and so on. See \@ref(fig:jobs).
 
 ### Item generation
 
@@ -280,26 +275,11 @@ Our 3x3 bifactor model produced nine pairs of dimensions (e.g., Vigor-Cognitive,
 
 An item sorting process was conducted to ensure content validity of our scale. Our original 50 items were presented to seven masters and PhD students in industrial-organizational psychology at Montclair State University, with each student instructed to sort each item into its respective substantive and attitudinal dimensions. Items that were not sorted into the same substantive-attitudinal dimension pair by at least five of seven raters were excluded from further analysis. Students were not aware of the intended dimensions of each item and were presented with the following definitions for sorting:
 
-Substantive:
-
--   *Absorption*: Being fully immersed in one's work, where time passes quickly and one has difficulty detaching from work tasks
-
--   *Vigor*: Experiencing persistent levels of energy, effort, and enthusiasm while working
-
--   *Dedication*: Experiencing pride and challenge in ones work, as well as strong feelings of support from and loyalty toward the organization
-
-Attitudinal:
-
--   *Cognitive*: Pertaining to thoughts or general mental processes (for example what someone thinks)
-
--   *Affective*: Pertaining to feelings or emotions (for example, how someone feels)
-
--   *Behavioral*: Pertaining to acts or actions (for example, what someone does)
+Students were given the following definitions for item sorting. Absorption: Being fully immersed in one's work, where time passes quickly and one has difficulty detaching from work tasks. Vigor: Experiencing persistent levels of energy, effort, and enthusiasm while working. Dedication: Experiencing pride and challenge in ones work, as well as strong feelings of support from and loyalty toward the organization. Attitudinal: Pertaining to thoughts or general mental processes (for example what someone thinks). Affective: Pertaining to feelings or emotions (for example, how someone feels). Behavioral: Pertaining to acts or actions (for example, what someone does)
 
 > See table *X* for a full list of items and their respective dimensions.
 
 Following item sorting, we further reviewed the wording of each item and eliminated all that, upon review, fell outside of the content domain (e.g. “I would rather work here than elsewhere”), eventually arriving at 36 candidate items.
-
 
 ## Procedure
 
@@ -336,8 +316,10 @@ mod2$Notes <- c("Candidate for deletion due to construct duplication", "", "Cand
 
 colnames(mod2) <- c('Element 1', 'Element 2', "Modification Index", "Notes") #Δχ2 isn't showing up properly in knit output. Fix.
 
-mod <- apa_table(mod2, caption = "Attitudinal structure modification indices (36 item analysis)", align = c("m{2cm}","m{2cm}","m{2cm}","m{7cm}"))
+mod <- apa_table(mod2, caption = "Attitudinal structure modification indices (36 item analysis)")
 mod
+
+#, align = c("m{2cm}","m{2cm}","m{2cm}","m{7cm}")
 ```
 
 > > Actually it doesn't matter that much with only 1 item deletion - probably go ahead and do a few before recheck modification indices
