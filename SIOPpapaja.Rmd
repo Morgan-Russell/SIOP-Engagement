@@ -46,11 +46,12 @@ footnotelist      : no
 linenumbers       : no
 mask              : no
 draft             : no
+numbersections    : no
 
 csl               : "apa7.csl"
 documentclass     : "apa7"
 classoption       : "man"
-output            : papaja::apa6_pdf
+output            : papaja::apa6_word
 ---
 
 ```{r setup, include = FALSE}
@@ -68,7 +69,7 @@ knitr::opts_chunk$set(cache.extra = knitr::rand_seed)
 
 The term engagement within the context of work emerged in organizational psychology and business literature in the early 90’s (Khan, 1990). Today, there are four main lines of research focused on engagement: personal engagement, burnout/engagement, work engagement, and employee engagement. These four constructs are defined and measured differently across the literature, making it hard to determine what exactly is being measured when organizations survey their employees to assess “engagement”. Work engagement has been defined as “the positive, fulfilling, work-related state of mind that is characterized by vigor, dedication, and absorption. Vigor is characterized by high levels of energy and mental resilience while working. Dedication refers to being strongly involved in one’s work and experiencing a sense of significance, enthusiasm, inspiration, pride, and challenge. Absorption is characterized by being fully concentrated and happily engrossed in one’s work, whereby time passes quickly and one has difficulties with detaching oneself from work” (Schaufeli et al., 2002). Individuals who are engaged in their work are known to have high levels of energy, enthusiasm, and are completely immersed in their work tasks (Bakker et al., 2018). Based on the Schaufeli et al. (2002) definition of engagement we conceptualize engagement as a mental state wherein employees feel energized, are enthusiastic about the content of their work and the things they do, and are so immersed in their work activities that time seems compressed. 
  
- here is a large body of evidence supporting the relationships between work engagement and organizational outcomes, including those which are performance based (Simpson, 2008). Which is why despite the lack of clarity around the construct, work engagement has emerged as an important component of an organization’s overall health and strategy. Given the potential outcomes of either having or lacking employees who experience work engagement. Across the literature you can find different trends in work engagement research, such as studying work engagement as a phenomenon that fluctuates within individuals, episodic work engagement, organizational-level work engagement, and leadership and work engagement. A relevant topic in recent literature is how dynamic work engagement can be. Bakker and colleagues (2018) point out that for organizational practice, it is important to understand that employees experience fluctuating levels of engagement at work and what causes these fluctuations (e.g., culture, environment, leadership, etc.). Although it is important that research continues to improve our understanding of the nature, causes, and outcomes of work engagement, it is also important that this knowledge is transferred to practical applications that can benefit both individuals and organizations. An important aspect of accumulating knowledge on the subject, is the methodological component of how that knowledge is built.
+There is a large body of evidence supporting the relationships between work engagement and organizational outcomes, including those which are performance based (Simpson, 2008). Which is why despite the lack of clarity around the construct, work engagement has emerged as an important component of an organization’s overall health and strategy. Given the potential outcomes of either having or lacking employees who experience work engagement. Across the literature you can find different trends in work engagement research, such as studying work engagement as a phenomenon that fluctuates within individuals, episodic work engagement, organizational-level work engagement, and leadership and work engagement. A relevant topic in recent literature is how dynamic work engagement can be. Bakker and colleagues (2018) point out that for organizational practice, it is important to understand that employees experience fluctuating levels of engagement at work and what causes these fluctuations (e.g., culture, environment, leadership, etc.). Although it is important that research continues to improve our understanding of the nature, causes, and outcomes of work engagement, it is also important that this knowledge is transferred to practical applications that can benefit both individuals and organizations. An important aspect of accumulating knowledge on the subject, is the methodological component of how that knowledge is built.
 
 # Models
 
@@ -285,7 +286,6 @@ The effective result of this was two divergent quasi-experimental approaches: 1)
 
 We conducted a correct item-total correlation on our original 36-items set. Base off, the r. drops that the corrected item-total correlations provide us we narrowed it down by selecting that items that had the best r. drops off removing one item at a time. For example, each cell division contain 4 items, therefore, we remove one of the four items creating 6 potential 3 item corrected item correlations, and from there we choose the items with the best r. drops. We continued the same process when narrowing our three items down to two items. An example is shown below:
 
-
 ### CFA Modification Indices
 
 We followed two parallel stepwise item-reduction processes centered around eliminating items in decreasing order of modification indices. Looking at the 36-item substantive and attitudinal models independently (process 1 and process 2), we requested modification indices from each, with the intent of retaining indicators whose fixed shared residual covariances were associated with high modification indices (indicating better model fit if the paths were freed). The item pair with the highest modification index was scrutinized, with a subjective group judgment made on wording and content domain coverage. The less preferred item was removed from the model. In cases where the highest modification index was between the only two remaining items in a substantive-attitudinal pair, these items were passed over for scrutiny in favor of the items with the next-highest index. This process was repeated until 18 items remained (i.e., 2 items for each of the 9 substantive-attitudinal pairs).
@@ -322,7 +322,7 @@ mod
 
 ## Data analysis
 
-We used `r cite_r("r-references.bib")` for all our analyses.
+We used `r cite_r("r-references.bib")` for all analyses.
 
 # Results
 
