@@ -74,6 +74,7 @@ There is a large body of evidence supporting the relationships between work enga
 # Models
 
 Like many other constructs within the psychology literature, knowledge on work engagement has been built based on its measurement and linkage to other work outcomes. There are currently many work engagement scales used for either academic or applied purposes (sometimes both), which provide work engagement scores at the individual level. Most of these scales are measuring latent constructs that are not work engagement per se, but are intended to capture elements of this construct through indicators of other latent constructs. For example, the idea that vigor, dedication, and absorption together form the foundation of work engagement forms the basis of the Utrecht Work Engagement Scale (UWES; @schaufeli_measurement_2002).  Despite its wide use and recognition, the UWES has been subject to criticism due to its development methodology and factorial structure (@willmer_exploratory_2019). One of the main arguments being that the three subscales; vigor, dedication and absorption are closely correlated with each other, making it hard to argue that the three-factor structure is better than the single factor structure to measure work engagement (@kulikowski_we_2017). However, the UWES is still a widely used measure and its subscales are used to identify the specific subcategories of work engagement that need improvement. Given their popularity, the subscales within this theoretical framework are used as the first theoretical model for this project (see Figure 1). 
+
 To our knowledge, the first use of the word "engagement" as a construct came from @kahn1990psychological, who defined it as: "the harnessing of organization members' selves to their work roles; in engagement, people employ and express themselves physically, cognitively, and emotionally during role performances." Although this definition was quickly bypassed by subsequent papers (see, for example, [@baumruk2004missing] and [@shaw2005engagement], who framed it in terms of one's cognitive and affective *commitment* to one's organization), @kahn1990psychological's definition is notable in that it conforms to the then-ascendant tripartite model of attitudes proposed by @rosenberg_cognitive_1960. This model frames attitudes as latent variables that manifest cognitively, affectively and behaviorally. The tripartite model of attitude emerged from the Yale Communication and Attitude program in the 1950’s. It is a latent variable model based on the assumption that the latent variable elicits three types of responses or manifestations: a persons’ cognitive, affective, and behavioral responses to a specific attitude (@kaiser_campbell_2019). Even though it is not specifically a work engagement model, the tripartite model has helped researchers define and deconstruct attitudes to gain a better understanding of individuals’ responses towards specific attitude objects (@kaiser_campbell_2019). 
 
 # Bifactor structures 
@@ -251,24 +252,20 @@ tenure_hist <- ggplot(together) +
 tenure_hist
 ```
 
-```{r job_table, fig.cap="ISCO professional categories of participants"}
+```{r job_table, fig.cap="ISCO professional categories of participants", include=FALSE}
 job_table <- knitr::kable(job_groups, col.names = c("Professional category", "Count"))
 job_table
 ```
 
-Participants provided their job titles via an optional free text-entry box at the end of the survey. From there, we classified job titles according to the International Standard Classification of Occupations (ISCO-8) with the `classify_occupation` function within the `labourR` package (@R-labourR). The ISCO hierarchically organizes jobs in increasing order of specificity. For example, the first level of the hierarchy distinguishes a professional from a clerical worker or a technician. On the second level, professionals are distinguished among each other by whether they are engineers, medical workers, lawyers, and so on. See \@ref(fig:jobs).
+Participants provided their job titles via an optional free text-entry box at the end of the survey. From there, we classified job titles according to the International Standard Classification of Occupations (ISCO-8) with the `classify_occupation` function within the `labourR` package (@R-labourR). The ISCO hierarchically organizes jobs in increasing order of specificity. For example, the first level of the hierarchy distinguishes a professional from a clerical worker or a technician. On the second level, professionals are distinguished among each other by whether they are engineers, medical workers, lawyers, and so on. See \@ref(fig:jobs). According to this classification, 120 of our participants were professionals, 51 were managers, 4 were clerical support workers, 3 were plant and machine operators, and 1 was a trade worker.
 
 ### Item generation
 
-We generated a set of 50 items for our engagement measure, with the ultimate goal of reducing them to a final set of 18. These items were generated according to a review of extant tripartite engagement measures, as well as *WHAT RESEARCH DID WE USE FOR ATTITUDINAL WORDING? WAS IT LITERALLY JUST "I THINK", "I FEEL", "I DO"?* Each item was worded to reflect both a substantive dimension as well as an attitudinal dimension. For example, the item "My job makes me feel like I'm part of something meaningful" reflects the affective dimension with "feel" and the dedication dimension with "I'm part of something meaningful."
-
-Our 3x3 bifactor model produced nine pairs of dimensions (e.g., Vigor-Cognitive, Vigor-Affective, Vigor-Behavioral, etc.). With 36 initial items, this left four items per pair of substantive and attitudinal dimensions.
+We generated a set of 50 items for our engagement measure, with the ultimate goal of reducing them to a final set of 18. Each item was worded to reflect both a substantive dimension as well as an attitudinal dimension. For example, the item "My job makes me feel like I'm part of something meaningful" reflects the affective dimension with "feel" and the dedication dimension with "I'm part of something meaningful." Our 3x3 bifactor model produced nine pairs of dimensions (e.g., Vigor-Cognitive, Vigor-Affective, Vigor-Behavioral, etc.). With 36 initial items, this left four items per pair of substantive and attitudinal dimensions.
 
 ### Content validation and initial item reduction
 
 An item sorting process was conducted to ensure content validity of our scale. Our original 50 items were presented to seven masters and PhD students in industrial-organizational psychology at Montclair State University, with each student instructed to sort each item into its respective substantive and attitudinal dimensions. Items that were not sorted into the same substantive-attitudinal dimension pair by at least five of seven raters were excluded from further analysis.
-
-> See table *X* for a full list of items and their respective dimensions.
 
 Following item sorting, we further reviewed the wording of each item and eliminated all that, upon review, fell outside of the content domain (e.g. “I would rather work here than elsewhere”), eventually arriving at 36 candidate items.
 
@@ -529,6 +526,97 @@ apa_table(fits2, caption = "Summary fit statistics (18 item proposed scale defin
 
 ## Final scale definitions
 
+> currently the table uses the twenty-item scale definition
+
+```{r final, fig.cap="Final scale definition"}
+#This is the TWENTY ITEM scale definition
+
+item_number <- seq(1:36)
+
+text <- c("I am able to concentrate on my work without distractions.",
+"I have a hard time detaching mentally from my work.",
+"Time passes quickly while I'm working.",
+"I find it difficult to mentally disconnect from work.",
+"I enjoy thinking about work even when I'm not at work.",
+"Most days, I feel happiest when the workday is soon to be complete.",
+"I am happiest when I am immersed in a project.",
+"I love starting my workday.",
+"I devote more time than is expected of me.",
+"I have to be reminded to take breaks while I'm at work.",
+"I never miss a work deadline.",
+"I never allow distractions to interfere with my work.",
+"I devote my full attention to my work tasks throughout the day.",
+"Thinking about work saps my energy.",
+"I would rather direct my focus toward a work task than a personal task.",
+"I'm able to maintain good levels of energy throughout the workday.",
+"I enjoy spending time completing my job tasks.",
+"Most days I feel enthusiastic about starting my work day.",
+"I feel motivated to go beyond what is asked of me.",
+"This job drains my energy.",
+"When work is slow I find ways to be productive.",
+"I express enthusiasm for my job while at work.",
+"I try my best to perform well at work.",
+"If I notice my energy level is low, I take corrective steps to re-energize.",
+"I plan my future with this company.",
+"I believe this company cares about my career goals.",
+"I often think about finding another job.",
+"This organization challenges me to work at my full potential.",
+"I am proud to be a member of this organization.",
+"I feel supported by my supervisor when I fail at a task.",
+"I feel proud of my accomplishments within this organization.",
+"My job makes me feel like I'm part of something meaningful.",
+"I make valued contributions to the organization.",
+"I embrace challenging situations at work.",
+"I speak positively about this organization to others.",
+"This organization provides the resources necessary for me to successfully perform my job."
+)
+
+substantive <- c(rep("Absorption", 12), rep("Vigor", 12), rep("Dedication", 12))
+attitudinal <- rep(c(rep("Cognitive", 4), rep("Affective", 4), rep("Behavioral", 4)),3)
+final <- c("Included",
+"Excluded",
+"Included",
+"Included",
+"Included",
+"Excluded",
+"Excluded",
+"Included",
+"Excluded",
+"Included",
+"Included",
+"Excluded",
+"Excluded",
+"Included",
+"Excluded",
+"Included",
+"Included",
+"Excluded",
+"Included",
+"Excluded",
+"Included",
+"Included",
+"Excluded",
+"Excluded",
+"Included",
+"Included",
+"Excluded",
+"Included",
+"Excluded",
+"Excluded",
+"Included",
+"Included",
+"Excluded",
+"Included",
+"Included",
+"Excluded"
+)
+
+item_table <- data.frame(item_number, text, substantive, attitudinal, final)
+item_table <- papaja::apa_table(item_table)
+item_table
+```
+
+
 
 ## Study 2
 
@@ -536,9 +624,9 @@ Construct validation was acccomplished via administration of the 17-item UWES as
 
 # Discussion
 
-The purpose of this study was to present two divergent approaches for constructing scales that simultaneously probe the substantive and attitudinal factor structures of employee engagement. Toward this end, we propose two similar scale definitions 
+The purpose of this study was to present two divergent approaches for constructing scales that simultaneously probe the substantive and attitudinal factor structures of employee engagement.
 
-Our next endeavor will be to establish convergent and discriminant validity of the scales.
+Our next endeavor will be to establish convergent and discriminant validity of ourr scale
 
 Currently, the UWES is one of the most popular engagement scales
 Our proposed scale would 
