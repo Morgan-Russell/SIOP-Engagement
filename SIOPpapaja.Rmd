@@ -511,7 +511,6 @@ apa_table(fits2, caption = "Summary fit statistics (18 item proposed scale defin
 
 ## Final scale definitions
 
-
 ```{r final, fig.cap="Final scale definition"}
 item_number <- seq(1:36)
 
@@ -675,6 +674,7 @@ item_table
 
 
 
+
 ## Study 2
 
 Construct validation was accomplished via administration of the 17-item UWES as well as the @saks2006antecedents 12-item scale. @saks2006antecedents aggregates to two scales: job and organizational engagement.
@@ -713,3 +713,4 @@ It is our hope that the success of this approach might evangelize bifactor analy
 :::
 
 \endgroup
+
