@@ -40,7 +40,7 @@ wordcount         : "X"
 bibliography      : ["r-references.bib", "engage.bib", "siopadds.bib", "bifactor.bib", "book.bib", "renata.bib"]
 
 floatsintext      : no #change to yes if we want all tables to be put in-line rather than pushed to end of paper
-figurelist        : no
+figurelist        : yes
 tablelist         : no
 footnotelist      : no
 linenumbers       : no
@@ -71,34 +71,20 @@ The term engagement within the context of work emerged in organizational psychol
 
 There is a large body of evidence supporting the relationships between work engagement and organizational outcomes, including those which are performance based (Simpson, 2008). Which is why despite the lack of clarity around the construct, work engagement has emerged as an important component of an organization’s overall health and strategy. Given the potential outcomes of either having or lacking employees who experience work engagement. Across the literature you can find different trends in work engagement research, such as studying work engagement as a phenomenon that fluctuates within individuals, episodic work engagement, organizational-level work engagement, and leadership and work engagement. A relevant topic in recent literature is how dynamic work engagement can be. Bakker and colleagues (2018) point out that for organizational practice, it is important to understand that employees experience fluctuating levels of engagement at work and what causes these fluctuations (e.g., culture, environment, leadership, etc.). Although it is important that research continues to improve our understanding of the nature, causes, and outcomes of work engagement, it is also important that this knowledge is transferred to practical applications that can benefit both individuals and organizations. An important aspect of accumulating knowledge on the subject, is the methodological component of how that knowledge is built.
 
-# Models
+## Models
 
 Like many other constructs within the psychology literature, knowledge on work engagement has been built based on its measurement and linkage to other work outcomes. There are currently many work engagement scales used for either academic or applied purposes (sometimes both), which provide work engagement scores at the individual level. Most of these scales are measuring latent constructs that are not work engagement per se, but are intended to capture elements of this construct through indicators of other latent constructs. For example, the idea that vigor, dedication, and absorption together form the foundation of work engagement forms the basis of the Utrecht Work Engagement Scale (UWES; @schaufeli_measurement_2002). Despite its wide use and recognition, the UWES has been subject to criticism due to its development methodology and factorial structure [@willmer_exploratory_2019]. A central criticism is that the three subscales; vigor, dedication and absorption are closely correlated with each other, making it hard to argue that the three-factor structure is better than the single factor structure to measure work engagement [@kulikowski_we_2017]. However, the UWES is still a widely used measure and its subscales are used to identify the specific subcategories of work engagement that need improvement. Given their popularity, the subscales within this theoretical framework are used as the first theoretical model for this project (see Figure 1). 
 
 To our knowledge, the first use of the word "engagement" as a construct came from @kahn1990psychological, who defined it as: "the harnessing of organization members' selves to their work roles; in engagement, people employ and express themselves physically, cognitively, and emotionally during role performances." Although this definition was quickly bypassed by subsequent papers (see, for example, @baumruk2004missing and @shaw2005engagement, who framed it in terms of one's cognitive and affective *commitment* to one's organization), @kahn1990psychological's definition is notable in that it conforms to the then-ascendant tripartite model of attitudes proposed by @rosenberg_cognitive_1960. This model frames attitudes as latent variables that manifest cognitively, affectively and behaviorally. The tripartite model of attitude emerged from the Yale Communication and Attitude program in the 1950’s. It is a latent variable model based on the assumption that the latent variable elicits three types of responses or manifestations: a persons’ cognitive, affective, and behavioral responses to a specific attitude (@kaiser_campbell_2019). Even though it is not specifically a work engagement model, the tripartite model has helped researchers define and deconstruct attitudes to gain a better understanding of individuals’ responses towards specific attitude objects (@kaiser_campbell_2019). 
 
-# Bifactor structures 
+## Bifactor structures 
 
 Bifactor analysis is part of the exploratory factor analytic domain and is used to account for variance in observed variables from the effects of latent or general factors [@giordano_exploratory_2020]. In most applications the latent constructs included in bifactor models are mutually orthogonal (i.e., uncorrelated), and represent the broad target constructs an instrument was designed to measure. Bifactor models are best suited to represent the multidimensionality arising from item responses that aim to measure broader constructs through multiple domains or subcategories [@reise_rediscovery_2012]. Additionally, these models can be classified as constrained hierarchical bifactor models and unconstrained non-hierarchical bifactor models [@giordano_exploratory_2020]. For the purposes of this project, an unconstrained non-hierarchical model is used to determine which group factors represent substantive and attitudinal constructs. The resulting general factors in the non-hierarchical model have a direct (i.e., non-mediated) relationship with each variable observed. In this case, each general factor from both substantive and attitudinal models have non-mediated but overlapping effects on each variable. 
 
-
-> we need to do some market research on the Q12: 1. what's the feedback report look like? (google images show one overall "satsifaction" score and/or one overall "engagement" score), 2. how much does it cost, 3. what are the 200 pulse items Gallup refers to? (6/7/21)
-
-
-
-This model is not without criticism, however. Some critics question its structural validity by pointing out that vigor, dedication and absorption all correlate highly with each other [@kulikowski2017we].
-
-> need more on criticisms of model
-
-The present article explores two methods for constructing a scale that incorporates both the substantive and attitudinal models into one, a more classical one based on corrected item-total correlations and one based on modification indices.
-
 # Methods
 
-> what does the below text mean? 
+> Choice of focus on BIC versus AIC discussed in @dziak2020sensitivity.
 
-Choice of focus on BIC versus AIC discussed in @dziak2020sensitivity.
-
-All analysis was conducted in R.
 
 ```{r getData, echo=FALSE, warning=FALSE}
 #PASTED CURRENT VERSION OF 'MORGAN JOB TITLE HOURS WORKED'
@@ -311,17 +297,16 @@ mod
 #, align = c("m{2cm}","m{2cm}","m{2cm}","m{7cm}")
 ```
 
-> > Actually it doesn't matter that much with only 1 item deletion - probably go ahead and do a few before recheck modification indices
-
-### Single factor versus bifactor approaches
-
-> Casey this is where you come in
-
 ## Data analysis
 
 We used `r cite_r("r-references.bib")` for all analyses.
 
 # Results
+
+> For KULAS to do: two sections
+> 1) 6x6 correlation matrix between scale scores
+> 2) corrected item-total correlations
+
 
 CFA drafts below
 
@@ -452,8 +437,6 @@ semPlot::semPaths(Fit1.1, what="std", sizeLat=10, style="lisrel",
 ```
 
 ```{r CFAatt2, echo=FALSE, warning=FALSE, fig.cap="Attitudinal factor measurement model"}
-
-
 Att_Model<-'
 Cognitive  = ~Item_1  + Item_3  + Item_14 + Item_16 + Item_26 + Item_28
 Affective  = ~Item_5 +  Item_8  + Item_17 + Item_19 + Item_31 + Item_32
@@ -528,11 +511,8 @@ apa_table(fits2, caption = "Summary fit statistics (18 item proposed scale defin
 
 ## Final scale definitions
 
-> currently the table uses the twenty-item scale definition
 
 ```{r final, fig.cap="Final scale definition"}
-#This is the TWENTY ITEM scale definition
-
 item_number <- seq(1:36)
 
 text <- c("I am able to concentrate on my work without distractions.",
@@ -573,33 +553,10 @@ text <- c("I am able to concentrate on my work without distractions.",
 "This organization provides the resources necessary for me to successfully perform my job."
 )
 
-substantive <- c(rep("Absorption", 12), rep("Vigor", 12), rep("Dedication", 12))
-attitudinal <- rep(c(rep("Cognitive", 4), rep("Affective", 4), rep("Behavioral", 4)),3)
-final <- c("Included",
+Dimension1 <- c(rep("Absorption", 12), rep("Vigor", 12), rep("Dedication", 12))
+Dimension2 <- rep(c(rep("Cognitive", 4), rep("Affective", 4), rep("Behavioral", 4)),3)
+Bifactor <- c("Included",
 "",
-"Included",
-"Included",
-"Included",
-"",
-"",
-"Included",
-"",
-"Included",
-"Included",
-"",
-"",
-"Included",
-"",
-"Included",
-"Included",
-"",
-"Included",
-"",
-"Included",
-"Included",
-"",
-"",
-"Included",
 "Included",
 "",
 "Included",
@@ -607,13 +564,111 @@ final <- c("Included",
 "",
 "Included",
 "Included",
+"Included",
+"",
+"",
+"Included",
+"",
 "",
 "Included",
 "Included",
-""
-)
+"Included",
+"",
+"",
+"",
+"Included",
+"Included",
+"",
+"Included",
+"Included",
+"",
+"",
+"",
+"",
+"Included",
+"Included",
+"Included",
+"",
+"Included",
+"")
 
-item_table <- data.frame(item_number, text, substantive, attitudinal, final)
+Attitudinal <- c("Included",
+"",
+"Included",
+"",
+"Included",
+"",
+"",
+"Included",
+"",
+"Included",
+"Included",
+"",
+"",
+"",
+"Included",
+"Included",
+"Included",
+"",
+"Included",
+"",
+"Included",
+"Included",
+"",
+"",
+"",
+"Included",
+"",
+"Included",
+"",
+"",
+"Included",
+"Included",
+"",
+"Included",
+"Included",
+"")
+
+Substantive <- c("",
+  "Included",
+  "Included",
+  "",
+  "",
+  "",
+  "Included",
+  "Included",
+  "",
+  "Included",
+  "Included",
+  "",
+  "",
+  "Included",
+  "",
+  "Included",
+  "Included",
+  "",
+  "Included",
+  "",
+  "Included",
+  "Included",
+  "",
+  "",
+  "",
+  "Included",
+  "",
+  "Included",
+  "",
+  "",
+  "Included",
+  "Included",
+  "",
+  "Included",
+  "Included",
+  "")
+
+  
+
+item_table <- data.frame("Number" = item_number, "Item text" = text, "Dimension 1" = Dimension1, "Dimension 2" = Dimension2, Bifactor, Substantive, Attitudinal)
 item_table <- papaja::apa_table(item_table)
 item_table
 ```
