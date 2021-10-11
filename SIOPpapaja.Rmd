@@ -257,7 +257,7 @@ In addition to an intentional bifactor structure, we wanted to also introduce ex
 
 ### Corrected item-total correlations
 
-Using the *alpha* function from the *psych* package, we calculated corrected item-total correlations for all items. We removed the item with the lowest corrected item-total correlation from the scale definition, leaving three items per dimension pair. We then re-ran our alpha analyses upon our 3-item definitions and repeated this process, leaving only two items per substantive-attitudinal pair which was our desired scale length (18 items).
+Using the *alpha* function from the *psych* package, we calculated corrected item-total correlations for all items. For each bifactor pair, we removed the item with the lowest corrected item-total correlation from the scale definition, leaving three items per dimension pair. We then re-ran our alpha analyses upon our 3-item definitions and repeated this process, leaving only two items per substantive-attitudinal pair which was our desired scale length (18 items).
 
 ### CFA Modification Indices
 
