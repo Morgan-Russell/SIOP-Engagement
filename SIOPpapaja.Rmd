@@ -1,5 +1,5 @@
 ---
-title             : "Development of an Intentional Bifactor Engagement Measure"
+title             : "Development of an Intended Bifactor Engagement Measure"
 shorttitle        : "BiFactor Engagement"
 
 author: 
@@ -22,12 +22,13 @@ affiliation:
     institution   : "Harver"
 
 authornote: |
-  Add complete departmental affiliations for each author here. Each new line herein must be indented, like this line.
-
-  Enter author note here.
+  Title: 85 characters;
+  Abstract: 600 characters
+  Word count: 3,000 words
+  Remove names
 
 abstract: |
-  Employee engagement has enjoyed a surge in interest as a sought-after attitude despite continued disageement regarding its internal structure and nomological relationship to other constructs, such as satisfaction and burnout. We describe the development of an intentional bi-factor measure of engagement, and document two independent scale definition procedures, one based on internal consistency and the other informed by CFA modification indices. Ultimately, we arrive at scale definitions that reconcile these two approaches.
+  Employee engagement has enjoyed a surge in interest as a sought-after attitude despite continued disageement regarding its internal structure and nomological relationship to other constructs, such as satisfaction and burnout. We describe the development of an intentional bi-factor measure of engagement, and document two independent scale definition procedures, one based on internal consistency and the other informed by CFA modification indices. Ultimately, we arrive at scale definitions that should be considered of interest to Industrial and Organizational Psychologists.
   
 keywords          : "Engagement, bifactor analysis"
 wordcount         : "X"
@@ -61,21 +62,24 @@ knitr::opts_chunk$set(cache.extra = knitr::rand_seed, echo=FALSE, warning=FALSE,
 
 ```
 
-Within the context of work, the term "engagement" first emerged in the organizational psychology and business literature in the early 1990s [@kahn1990psychological]. The evolution of the construct can perhaps be considered through the lens of semi-distinct lines of research focused on: 1) work engagement, 2) burnout/engagement, 3) personal engagement, and 4) employee engagement. These perspectives can be identified by slightly differing definitions (and subsequently measures), and perhaps contribute to some confusion regarding what exactly is being measured when organizations survey their employees to assess "engagement". Although "personal engagement" was coined in @kahn1990psychological , few subsequent articles reference engagement by this name. @schaufeli2013engagement distinguishes work engagement from employee engagement on the basis of their referent: "Work engagement refers to the relationship of the employee with his or her *work*, whereas employee engagement may also include the relationship with the *organization*".
+Within the context of work, the term "engagement" first emerged in the organizational psychology and business literature in the early 1990s [@kahn1990psychological]. The evolution of the construct can perhaps be considered through the lens of semi-distinct lines of research focused on: 1) work engagement, 2) personal engagement, and 4) employee engagement, and 4) burnout. These perspectives can be identified by slightly differing definitions (and subsequently measures), and perhaps contribute to some confusion regarding what exactly is being measured when organizations survey their employees to assess "engagement". Although "personal engagement" was coined in @kahn1990psychological , few subsequent articles reference engagement by this name. @schaufeli2013engagement distinguishes work engagement from employee engagement on the basis of their referent: "Work engagement refers to the relationship of the employee with his or her *work*, whereas employee engagement may also include the relationship with the *organization*".
 
-The current project is most closely aligned with the "work engagement" tradition, whose frequently-cited definition of work engagement is "the positive, fulfilling, work-related state of mind that is characterized by vigor, dedication, and absorption. Vigor is characterized by high levels of energy and mental resilience while working. Dedication refers to being strongly involved in one's work and experiencing a sense of significance, enthusiasm, inspiration, pride, and challenge. Absorption is characterized by being fully concentrated and happily engrossed in one's work, whereby time passes quickly and one has difficulties with detaching oneself from work" [@schaufeli_measurement_2002]. Individuals who are engaged in their work are known to have high levels of energy, enthusiasm, and are completely immersed in their work tasks (Bakker et al., 2018).
+The current project is most closely aligned with the *work engagement* tradition, whose most frequently-cited definition of engagement is "the positive, fulfilling, work-related state of mind that is characterized by vigor, dedication, and absorption. Vigor is characterized by high levels of energy and mental resilience while working. Dedication refers to being strongly involved in one's work and experiencing a sense of significance, enthusiasm, inspiration, pride, and challenge. Absorption is characterized by being fully concentrated and happily engrossed in one's work, whereby time passes quickly and one has difficulties with detaching oneself from work" [@schaufeli_measurement_2002; p. 74]. 
 
-The nomological relationship of engagement to burnout has been the source of no small amount of debate. One school of thought contends that burnout is the opposite of engagement and resides on the antipode of the engagement spectrum, while others argue that engagement is a distinct construct entirely. Some credence is lent to the former claim by the fact that measures of burnout and engagement are moderately negatively correlated [@schaufeli2003utrecht]. Later, more sophisticated factor analysis found that a single factor did not adequately explain variance in both burnout and engagement, indicating that they are nomologically distinct [@trogolo2020work]. We favor the claim that burnout and engagement are related but separable constructs and do not explore their relationship in this study.
+The nomological relationship of engagement to burnout has been the source of no small amount of debate. One school of thought contends that burnout is the opposite of engagement and resides on the antipode of the engagement spectrum, while others argue that engagement is a distinct construct entirely. Some credence is lent to the former claim by the fact that measures of burnout and engagement tend to show moderate negative correlations [@schaufeli2003utrecht]. More recently, more sophisticated factor analysis found that a single factor did not adequately explain variance in both burnout and engagement, suggesting that they are nomologically distinct [@trogolo2020work]. We also align with the claim that burnout and engagement are related but separable constructs and do not explicitly explore their relationship in this study.
 
-> add sentence or two about Job Sat
+## Why engagement?
 
-There is a large body of evidence supporting the relationships between work engagement and organizational outcomes, including those which are performance based (Simpson, 2008). Which is likely one reason that, despite some lack of consensus around the construct itself, work engagement has maintained its status as an important indicator of an organization's overall health. *Given the potential outcomes of either having or lacking employees who experience work engagement.* Across the literature you can find different trends in work engagement research, such as studying work engagement as a phenomenon that fluctuates within individuals, episodic work engagement, organizational-level work engagement, and leadership and work engagement. A relevant topic in recent literature is how dynamic work engagement can be. Bakker and colleagues (2018) point out that for organizational practice, it is important to understand that employees experience fluctuating levels of engagement at work and what causes these fluctuations (e.g., culture, environment, leadership, etc.). Although it is important that research continues to improve our understanding of the nature, causes, and outcomes of work engagement, it is also important that this knowledge is transferred to practical applications that can benefit both individuals and organizations. An important aspect of accumulating knowledge on the subject is the methodological component of how that knowledge is built.
+> MORGAN: FOCUS ON IMPORTANT CORRELATES (I.E., COMMITMENT, ETC)
+There is a large body of evidence supporting the relationships between work engagement and organizational outcomes, including those which are performance based (Simpson, 2008). Which is likely one reason that, despite some lack of consensus around the construct itself, work engagement has maintained its status as an important indicator of an organization's overall health. Across the literature you can find different trends in work engagement research, such as studying work engagement as a phenomenon that fluctuates within individuals, episodic work engagement, organizational-level work engagement, and leadership and work engagement. A relevant topic in recent literature is how dynamic work engagement can be. Bakker and colleagues (2018) point out that for organizational practice, it is important to understand that employees experience fluctuating levels of engagement at work and what causes these fluctuations (e.g., culture, environment, leadership, etc.). Although it is important that research continues to improve our understanding of the nature, causes, and outcomes of work engagement, it is also important that this knowledge is transferred to practical applications that can benefit both individuals and organizations. An important aspect of accumulating knowledge on the subject is the methodological component of how that knowledge is built.
 
-## Substantive engagement Model
+## Our Proposed Model of Engagement
+
+> KULAS: Bifactor as method to clean up sub-scale associations
 
 Like many other constructs within the psychology literature, our knowledge of work engagement has been at least partially informed by its measurement and linkage to other work attitudes and behaviors. There are currently many work engagement scales used for either academic or applied purposes (and sometimes both), which extract work engagement scores at the individual level. Most of these scales are measuring latent constructs that are not work engagement per se, but are intended to capture elements of this construct through indicators of other latent constructs. For example, the idea that vigor, dedication, and absorption together form the foundation of work engagement forms the basis of the Utrecht Work Engagement Scale (UWES; Schaufeli et al., 2002). Despite its wide use and recognition, the UWES has been subject to criticism due to its development methodology and factorial structure [@willmer_exploratory_2019]. A central criticism is that the three subscales; vigor, dedication, and absorption, are closely correlated with each other, making it hard to argue that the three-factor structure is better than the single factor structure to measure work engagement [@kulikowski_we_2017]. However, the UWES is still a widely used measure and its subscales are used to identify the specific subcategories of work engagement that need improvement. Given their popularity, the subscales within this theoretical framework are used as the first theoretical model for this project (see Figure 1).
 
-## Attitudinal Model
+## Engagement as an attitude
 
 The first definition of "engagement" in a work context was offered by @kahn1990psychological: "the harnessing of organization members' selves to their work roles; in engagement, people employ and express themselves physically, cognitively, and emotionally during role performances." Although this definition was quickly outrun by ensuing contributors (see, for example, @baumruk2004missing and @shaw2005engagement, who framed it in terms of one's cognitive and affective *commitment* to one's organization), @kahn1990psychological's definition is notable in that it is inspired by the then-ascendant tripartite model of attitudes. This model is usually attributed to @rosenberg_cognitive_1960 and proposes that attitudes can be deconstructed into cognitive, affective, and behavioral components [@kaiser_campbell_2019]. Even though it is not specifically a work engagement model, the tripartite model has helped researchers define and deconstruct attitudes to gain a better understanding of individuals' responses towards specific attitude objects (@kaiser_campbell_2019).
 
@@ -85,7 +89,7 @@ Bifactor analysis is most commonly used to investigate shared variance in observ
 
 # Methods
 
-Based on the @schaufeli_measurement_2002 definition of engagement we conceptualize engagement as a mental state wherein employees feel energized, are enthusiastic about the content of their work and the things they do, and are so immersed in their work activities that time seems compressed. Furthermore, we approach our measurement of these engagement domains through the lens of an attitude and generate indicators that are indicative of cognitive, affective, and behavioral attitudinal components. Although by tradition, item complexity has been considered something to avoid, we eagerly embraced this complexity - both for the methodological extension of bifactor approaches as well as the potential to account for inter-domain associations of engagement measures previously viewed as a nuisance.
+Informed by the @schaufeli_measurement_2002 definition of engagement we conceptualize engagement as a mental state wherein employees feel energized, are enthusiastic about the content of their work and the things they do, and are so immersed in their work activities that time seems compressed. Furthermore, we approach our measurement of these engagement domains through the lens of an attitude and generate indicators that are indicative of cognitive, affective, and behavioral attitudinal components. Although by tradition, item complexity has been considered something to avoid, we eagerly embraced this complexity - both for the methodological extension of bifactor approaches as well as the potential to account for inter-domain associations of engagement measures previously viewed as a nuisance.
 
 ## Item generation
 
@@ -220,6 +224,8 @@ demo_table <- together %>%
 
 colnames(together)[39] <- "hours"     ## label too long
 
+together$hours[together$hours > 90] <- NA
+
 ```
 
 ## Participants
@@ -256,9 +262,9 @@ job_table
 
 Participants provided their job titles via an optional free text-entry box at the end of the survey. We classified job titles according to the International Standard Classification of Occupations (ISCO-8) via the *labourR* package [@R-labourR]. The ISCO hierarchically organizes jobs in increasing order of specificity. For example, the first level of the hierarchy distinguishes a professional from a clerical worker or a technician. On the second level, professionals are distinguished among each other by whether they are engineers, medical workers, lawyers, and so on. According to this classification, 120 of our participants were professionals, 51 were managers, 4 were clerical support workers, 3 were plant and machine operators, and 1 was a trade worker.
 
-## Experimental conditions
+## Scale development "conditions"
 
-In addition to an intentional bifactor structure, we wanted to also introduce experimental conditions regarding the effort to obtain final scale definitions. One team of scale reductionists therefore focused on corrected item-total correlations while the other based final scale definitions on CFA modification indices.
+In addition to an intentional bifactor structure, we wanted to also introduce procedural conditions regarding the effort to obtain final scale definitions. One team of scale reductionists therefore focused on corrected item-total correlations while the other based final scale definitions on CFA modification indices.
 
 ### Corrected item-total correlations
 
@@ -602,7 +608,7 @@ text <- c("I am able to concentrate on my work without distractions.",
 
 Dimension1 <- c(rep("Absorption", 12), rep("Vigor", 12), rep("Dedication", 12))
 Dimension2 <- rep(c(rep("Cognitive", 4), rep("Affective", 4), rep("Behavioral", 4)),3)
-Bifactor <- c("Included",
+Final <- c("Included",
 "",
 "Included",
 "",
@@ -639,83 +645,7 @@ Bifactor <- c("Included",
 "Included",
 "")
 
-Attitudinal <- c("Included",
-"",
-"Included",
-"",
-"Included",
-"",
-"",
-"Included",
-"",
-"Included",
-"Included",
-"",
-"",
-"",
-"Included",
-"Included",
-"Included",
-"",
-"Included",
-"",
-"Included",
-"Included",
-"",
-"",
-"",
-"Included",
-"",
-"Included",
-"",
-"",
-"Included",
-"Included",
-"",
-"Included",
-"Included",
-"")
-
-Substantive <- c("",
-  "Included",
-  "Included",
-  "",
-  "",
-  "",
-  "Included",
-  "Included",
-  "",
-  "Included",
-  "Included",
-  "",
-  "",
-  "Included",
-  "",
-  "Included",
-  "Included",
-  "",
-  "Included",
-  "",
-  "Included",
-  "Included",
-  "",
-  "",
-  "",
-  "Included",
-  "",
-  "Included",
-  "",
-  "",
-  "Included",
-  "Included",
-  "",
-  "Included",
-  "Included",
-  "")
-
-  
-
-item_table <- data.frame("Number" = item_number, "Item text" = text, "Dimension 1" = Dimension1, "Dimension 2" = Dimension2, Bifactor, Substantive, Attitudinal)
+item_table <- data.frame("Number" = item_number, "Item text" = text, "Dimension 1" = Dimension1, "Dimension 2" = Dimension2, Final)
 item_table <- papaja::apa_table(item_table)
 item_table
 ```
