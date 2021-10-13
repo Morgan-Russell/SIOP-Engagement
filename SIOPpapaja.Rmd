@@ -562,9 +562,43 @@ papaja::apa_table(read.csv("scaleitems.csv"), caption = "Final proposed scale de
 
 ```
 
+```{r alphas}
+
+abs <- psych::alpha(CFAdata[c(1,3,5,8,10,11)])
+vig <- psych::alpha(CFAdata[c(14,16,17,19,21,22)])
+ded <- psych::alpha(CFAdata[c(26,28,31,32,34,35)])
+aff <- psych::alpha(CFAdata[c(1,3,14,16,26,28)])
+cog <- psych::alpha(CFAdata[c(5,8,17,19,31,32)])
+beh <- psych::alpha(CFAdata[c(10,11,21,22,34,35)])
+
+```
+
 ## Final scale definitions
 
-As alluded to above, rather than relying exclusively on empirical superiority, final scale definitions were also informed by considerations of content domain coverage, which slightly favored the CFA modification index-informed definition.
+As alluded to above, rather than relying exclusively on empirical superiority, final scale definitions were also informed by considerations of content domain coverage, which slightly favored the CFA modification index-informed definition. Final scale $\alpha$'s were `r round(abs$total$raw_alpha,2)` (Absorption), `r round(ded$total$raw_alpha,2)` (Dedication), `r round(vig$total$raw_alpha,2)` (Vigor), `r round(aff$total$raw_alpha,2)` (Affect), `r round(cog$total$raw_alpha,2)` (Cognition), and `r round(beh$total$raw_alpha,2)` (Behavior). Correlations among unit-weighted scale aggregates are presented in Table XX.
+
+```{r unitweight}
+
+Absorption <- rowMeans(CFAdata[c(1,3,5,8,10,11)], na.rm=TRUE)
+Vigor <- rowMeans(CFAdata[c(14,16,17,19,21,22)], na.rm=TRUE)
+Dedication <- rowMeans(CFAdata[c(26,28,31,32,34,35)], na.rm=TRUE)
+Affect <- rowMeans(CFAdata[c(1,3,14,16,26,28)], na.rm=TRUE)
+Cognition <- rowMeans(CFAdata[c(5,8,17,19,31,32)], na.rm=TRUE)
+Behavior <- rowMeans(CFAdata[c(10,11,21,22,34,35)], na.rm=TRUE)
+
+new <- as.data.frame(cbind(Absorption, Vigor,Dedication,Affect,Cognition,Behavior))
+
+r <- corx::corx(new,                     ## can extend if needed
+                triangle = "lower",
+                stars = c(0.05, 0.01, 0.001),
+                describe = c(`$M$` = mean, `$SD$` = sd))
+
+papaja::apa_table(r$apa, # apa contains the data.frame needed for apa_table
+                  caption = "Unit-weighted scale intercorrelations (all conditions).",
+                  note = "* p < 0.05; ** p < 0.01; *** p < 0.001",
+                  landscape = TRUE,
+                  escape = F)
+```
 
 > For KULAS to do: two sections 1) 6x6 correlation matrix between scale scores 2) corrected item-total correlations
 
@@ -655,7 +689,9 @@ item_table
 
 # Discussion
 
-The purpose of this study was to document the development of an intentionally bifactor measure of employee engagement. To add an additional element of insterest regarding the SIOP audience, we furthermore followed two divergent approaches that resulted in slightly different scale definitions. Surprisingly, the approach focusing on facet-level internal consistency maximization resulted in a better fitting CFA than did the approach focusing on CFA fit! Ultimately, differences were reconciled via qualitative consideration of content domain coverage, and the proposed 18-item final solution is a compromise between the two "experimental" models.
+The purpose of this study was to document the development of an intentionally complex, bifactor measure of employee engagement. To add an additional element of insterest regarding the SIOP audience, we furthermore followed two divergent approaches that resulted in slightly different scale definitions. Surprisingly, the approach focusing on facet-level internal consistency maximization resulted in a better fitting CFA than did the approach focusing on CFA fit! Ultimately, differences were reconciled via qualitative consideration of content domain coverage, and the proposed 18-item final solution is a compromise between the two "experimental" models.
+
+The unit-weighted inter-scale correlations exhibit only moderately high association (in the .6-ish range), which is promising and perhaps provides some support for retention of the 3-facet substantive model, which has been criticized for high observed inter-scale associations [e.g., see @kulikowski2017we].
 
 Our research contributes to theory in two key ways. Firstly, it introduces a novel measure of engagement, developed in English, that will allow future researchers to further probe the tripartite attitudinal structure of the construct. To our knowledge, ours is the only engagement scale that probes the specific attitudinal dimensions of engagement.
 
