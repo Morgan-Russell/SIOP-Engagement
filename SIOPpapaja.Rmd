@@ -283,13 +283,13 @@ For example, the path with the highest modification index across both 36-item CF
 
 Although we retained two different item reduction lenses for the purpose of SIOP presentation, we did also land upon a final scale definition. This final definition was a compromise between the CFA-derived and corrected item-total correlation-derived definitions. The final choice of item to delete or retain across the two different candidate models was based on author preference for wording/semantics as well as construct domain coverage (considering the possibility of construct deficiency). Item variance was also consulted as a practical consideration, with retention being more likely for the item exhibiting greater response variance.
 
-```{r modindices, fig.cap="Sample modification index table"}
+```{r modindices, fig.cap="Process attended to with modification index scale definition (attitudinal structure modification indices shown)."}
 
 #figure out how to display this in the middle of the paper rather than a figure at the end of the paper  
 
 mod <- data.frame(read.csv('att.csv', row.names = NULL)[1:7, 2:5])
 mod2 <- mod[,-2]
-mod2$Notes <- c("Candidate for deletion due to construct duplication", "", "Candidate for retention due to substantive construct association", "", "", "", "")
+mod2$Notes <- c("Candidate for deletion due to construct duplication (both are Absorption/Cognition indicators)", "", "Candidate for retention due to substantive construct association (Dedication)", "", "", "", "")
 
 colnames(mod2) <- c('Element 1', 'Element 2', "Modification Index", "Notes") #Δχ2 isn't showing up properly in knit output. Fix.
 
