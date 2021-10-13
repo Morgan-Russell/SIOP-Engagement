@@ -575,6 +575,7 @@ beh <- psych::alpha(CFAdata[c(10,11,21,22,34,35)])
 
 ## Final scale definitions
 
+<<<<<<< HEAD
 As alluded to above, rather than relying exclusively on empirical superiority, final scale definitions were also informed by considerations of content domain coverage, which slightly favored the CFA modification index-informed definition. Final scale $\alpha$'s were `r round(abs$total$raw_alpha,2)` (Absorption), `r round(ded$total$raw_alpha,2)` (Dedication), `r round(vig$total$raw_alpha,2)` (Vigor), `r round(aff$total$raw_alpha,2)` (Affect), `r round(cog$total$raw_alpha,2)` (Cognition), and `r round(beh$total$raw_alpha,2)` (Behavior). Correlations among unit-weighted scale aggregates are presented in Table XX.
 
 ```{r unitweight}
