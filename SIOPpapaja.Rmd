@@ -516,7 +516,7 @@ Fit.mod2 <- lavaan::cfa(modified2, data = CFAdata, missing = "ML", estimator = '
 # semPlot::semPaths(Fit.mod2, bifactor = c("Cognitive", "Affective", "Behavioral"), "std", layout = "tree3",
 #                  rotation = 2, curvePivot=TRUE, style="lisrel", nCharNodes = 0, pastel=FALSE)
 
-semPlot::semPaths(Fit.mod2, bifactor = c("Cognitive", "Affective", "Behavioral"), style="lisrel", "std", layout = "tree3", sizeLat=10, rotation = 2, sizeMan=4.5,edge.label.cex=0.75, edge.color="black", asize=2)
+semPlot::semPaths(Fit.mod2, bifactor = c("Cognitive", "Affective", "Behavioral"), style="lisrel", "std", layout = "tree3", sizeLat=10, rotation = 2, sizeMan=4.5,edge.label.cex=0.75, edge.color="black", asize=2, sizeInt = 0, mar = c(.7,-3,.7,-3))
 
 
 # modindices(Fit.mod2, sort = TRUE, maximum.number = 25)
@@ -575,7 +575,6 @@ beh <- psych::alpha(CFAdata[c(10,11,21,22,34,35)])
 
 ## Final scale definitions
 
-<<<<<<< HEAD
 As alluded to above, rather than relying exclusively on empirical superiority, final scale definitions were also informed by considerations of content domain coverage, which slightly favored the CFA modification index-informed definition. Final scale $\alpha$'s were `r round(abs$total$raw_alpha,2)` (Absorption), `r round(ded$total$raw_alpha,2)` (Dedication), `r round(vig$total$raw_alpha,2)` (Vigor), `r round(aff$total$raw_alpha,2)` (Affect), `r round(cog$total$raw_alpha,2)` (Cognition), and `r round(beh$total$raw_alpha,2)` (Behavior). Correlations among unit-weighted scale aggregates are presented in Table XX.
 
 ```{r unitweight}
@@ -690,19 +689,19 @@ item_table
 
 # Discussion
 
-The purpose of this study was to document the development of an intentionally complex, bifactor measure of employee engagement. To add an additional element of insterest regarding the SIOP audience, we furthermore followed two divergent approaches that resulted in slightly different scale definitions. Surprisingly, the approach focusing on facet-level internal consistency maximization resulted in a better fitting CFA than did the approach focusing on CFA fit! Ultimately, differences were reconciled via qualitative consideration of content domain coverage, and the proposed 18-item final solution is a compromise between the two "experimental" models.
+> 1) methodological: bifactor structure
+> 2) practical: public domain; scalable to 2 aggreggations
+> 3) theoretical: possibly explains high inter-scale correlations reported on other measures
 
-The unit-weighted inter-scale correlations exhibit only moderately high association (in the .6-ish range), which is promising and perhaps provides some support for retention of the 3-facet substantive model, which has been criticized for high observed inter-scale associations [e.g., see @kulikowski2017we].
+The purpose of this study was to document the development of an intentionally complex bifactor measure of engagement. To add an additional element of interest regarding the SIOP audience, we furthermore followed two divergent approaches that resulted in slightly different scale definitions. Surprisingly, the approach focusing on facet-level internal consistency maximization resulted in a better fitting CFA than did the approach focusing on CFA fit! Ultimately, differences were reconciled via qualitative consideration of content domain coverage, and the proposed 18-item final solution is a compromise between the two "experimental" models.
 
-Our research contributes to theory in two key ways. Firstly, it introduces a novel measure of engagement, developed in English, that will allow future researchers to further probe the tripartite attitudinal structure of the construct. To our knowledge, ours is the only engagement scale that probes the specific attitudinal dimensions of engagement.
+In addition to the information provided in this presentation, we have also documented evidence of convergent and discriminant validity of these scales, although the scope of that extends beyond a single SIOP presentation. We have a much larger technical report that documents the information in this paper as well as broader explorations of instrument criterion- and construct-validation and that technical report is currently published as an open-access document. Our items also intentionally carry no copyright and are freely available to any researcher or practitioner interested in the topic of engagment.
 
-Secondly, we more generally advance the use of bifactor analysis as an alternative approach to testing and comparing structural models of constructs that extends beyond investigations of common method variance. In the context of attitudinal constructs, it may be appropriate to examine the possibility of bifactor solutions that conform to attitudinal structure. We hope that this endeavor encourages other researchers to also extend the bifactor procedure to novel measurement pursuits.
+Our research contributes to theory in three key ways. Firstly, it introduces a novel measure of engagement, developed in English and available for free, that will allow future researchers to probe the tripartite attitudinal structure of the construct while at the same time measuring the more "traditional" structure. To our knowledge, ours is the only engagement scale that probes the specific attitudinal dimensions of engagement.
 
-In addition to the information provided in this presentation, we have also documented evidence of convergent and discriminant validity of these scales, although the scope of that extends beyond a single SIOP presentation. We do have a much larger technical report that documents the information in this paper as well as broader explorations of instrument criterion- and construct-validation and that technical report is currently published as an open-access document - our items are also intentionally carry no copyright and are freely available to any researcher or practitioner interested in the topic of employee engagment.
+Secondly, we more generally advance the use of bifactor analysis as an alternative methodology for testing and comparing structural models of constructs that extends beyond investigations of common method variance. In the context of attitudinal constructs, it may be appropriate to examine the possibility of bifactor solutions that conform to attitudinal structure. We hope that this endeavor encourages other researchers to also extend the bifactor procedure to novel measurement pursuits.
 
-Bifactor analysis may be a valuable method of reconciling previously at-odds approaches to describing the same construct.
-
-We show that a scale can exhibit high internal consistency while simultaneously measuring two different structural models. It is our hope that the success of this approach might evangelize bifactor analysis and the more general approach of consolidating and integrating theories rather than parsing them.
+Thirdly, we broaden our theoretical understanding of engagement. The unit-weighted inter-scale correlations exhibit only moderately high association (in the .6-ish range), which is promising and perhaps provides some support for retention of the 3-facet substantive model, which has been criticized for high observed inter-scale associations [e.g., see @kulikowski2017we]. We show that a scale can be internally coherent while simultaneously measuring two different structural models. It is our hope that the success of this approach might evangelize bifactor analysis and the more general approach of consolidating and integrating models rather than parsing them.
 
 \newpage
 
