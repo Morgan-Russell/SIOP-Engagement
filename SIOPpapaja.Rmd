@@ -283,13 +283,13 @@ For example, the path with the highest modification index across both 36-item CF
 
 Although we retained two different item reduction lenses for the purpose of SIOP presentation, we did also land upon a final scale definition. This final definition was a compromise between the CFA-derived and corrected item-total correlation-derived definitions. The final choice of item to delete or retain across the two different candidate models was based on author preference for wording/semantics as well as construct domain coverage (considering the possibility of construct deficiency). Item variance was also consulted as a practical consideration, with retention being more likely for the item exhibiting greater response variance.
 
-```{r modindices, fig.cap="Sample modification index table"}
+```{r modindices, fig.cap="Process attended to with modification index scale definition (attitudinal structure modification indices shown)."}
 
 #figure out how to display this in the middle of the paper rather than a figure at the end of the paper  
 
 mod <- data.frame(read.csv('att.csv', row.names = NULL)[1:7, 2:5])
 mod2 <- mod[,-2]
-mod2$Notes <- c("Candidate for deletion due to construct duplication", "", "Candidate for retention due to substantive construct association", "", "", "", "")
+mod2$Notes <- c("Candidate for deletion due to construct duplication (both are Absorption/Cognition indicators)", "", "Candidate for retention due to substantive construct association (Dedication)", "", "", "", "")
 
 colnames(mod2) <- c('Element 1', 'Element 2', "Modification Index", "Notes") #Δχ2 isn't showing up properly in knit output. Fix.
 
@@ -558,7 +558,7 @@ The eventual 18-item scale definitions identified via the two item reduction pro
 
 ```{r scales}
 
-papaja::apa_table(read.csv("scaleitems.csv"), caption = "Final proposed scale definitions (derived via attendance to corrected item-total correlations or CFA modification indices)")
+papaja::apa_table(read.csv("items.csv"), caption = "Final proposed scale definitions (derived via attendance to corrected item-total correlations or CFA modification indices)")
 
 ```
 
@@ -575,6 +575,10 @@ beh <- psych::alpha(CFAdata[c(10,11,21,22,34,35)])
 
 ## Final scale definitions
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> 79d42ebcc6a80e7dfddc7d72d4d35d19f9749989
 As alluded to above, rather than relying exclusively on empirical superiority, final scale definitions were also informed by considerations of content domain coverage, which slightly favored the CFA modification index-informed definition. Final scale $\alpha$'s were `r round(abs$total$raw_alpha,2)` (Absorption), `r round(ded$total$raw_alpha,2)` (Dedication), `r round(vig$total$raw_alpha,2)` (Vigor), `r round(aff$total$raw_alpha,2)` (Affect), `r round(cog$total$raw_alpha,2)` (Cognition), and `r round(beh$total$raw_alpha,2)` (Behavior). Correlations among unit-weighted scale aggregates are presented in Table XX.
 
 ```{r unitweight}
